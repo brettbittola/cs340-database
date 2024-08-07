@@ -46,7 +46,7 @@ CREATE OR REPLACE TABLE Media (
 );
 
 -- Table structure for table `Copies`
-CREATE TABLE Copies (
+CREATE OR REPLACE TABLE Copies (
     copyID int NOT NULL AUTO_INCREMENT,
     mediaID int NOT NULL,
     customerID int,
@@ -85,7 +85,7 @@ VALUES ('FromSoftware'),
 
 INSERT INTO Customers (firstName, lastName, phoneNumber, email)
 VALUES
-('David', 'Johnson', '548-23-49513', 'davidjohnson@hotmail.com'),
+('David', 'Johnson', '548-234-9513', 'davidjohnson@hotmail.com'),
 ('Samantha', 'Smith', '748-594-1102', 'samanthasmith@yahoo.com'),
 ('Ashley', 'Brown', '325-102-4476', 'ashleybrown@gmail.com'),
 ('Kailey', 'Jones', '362-205-1145', 'kaileyjones@oregonstate.edu'),

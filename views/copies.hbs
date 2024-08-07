@@ -1,0 +1,74 @@
+<!-- Code adapted and modified from https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main -->
+
+<!-- copies.hbs -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+{{!-- Create a table --}}
+    <table id="copies-table">
+    {{!-- Header section --}}
+    <thead>
+
+        {{!-- For just the first row, we print each key of the row object as a header cell so we
+        know what each column means when the page renders --}}
+        <tr>
+            {{#each data.[0]}}
+            <th>
+                {{@key}}
+            </th>
+            {{/each}}
+            <th>delete</th>
+        </tr>
+    </thead>
+    {{!-- Body section --}}
+    <tbody>
+
+        {{!-- For each row, print the id, fname, lname, homeworld and age, in order --}}
+        {{#each data}}
+        <tr data-value={{this.copyID}}>
+            <td>{{this.copyID}}</td>
+            <td>{{this.mediaID}}</td>
+            <td>{{Media.mediaTitle}}</td>
+            <td>{{Creators.creatorName}}</td>
+            <td>{{Media.mediaType}}</td>
+            <td>{{this.customerID}}</td>
+            <td>{{Customers.customerFName}}</td>
+            <td>{{Customers.customerLName}}</td>
+
+            <td><button onclick="deleteCopy({{this.copyID}})">Delete</button></td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+<!-- /views/customers.hbs -->
+<h2>Add a Copy</h2>
+<p>To add a new copy, please enter the information below and click `Submit`.</p>
+<form id="add-copy-form" method="POST" action="/add-copy-form">
+    <label for="input-mediaID">Media ID: </label>
+    <input type="text" name="input-mediaID" id="input-mediaID-html">
+    
+    <label for="input-customerID">Customer ID: </label>
+    <input type="text" name="input-customerID" id="input-customerID-html">
+</form>
+
+<h2>Updating A Copy's Customer ID</h2>
+<p>To update a copy's customer ID, select the copy ID from the drop down list, then enter their new customer ID.</p>
+<form id="update-copy-form-ajax">
+
+    <label for="input-customerID">Customer ID: </label>
+    <select name="input-customerID" id="mySelect">
+        <option value="test">Select a Copy ID</option>
+        {{#each data}}
+        <option value="{{this.copyID}}">Copy ID {{this.copyID}} for {{Media.mediaID}} {{Media.title}}, currently checked out by {{Customers.customerID}} {{Customers.customerFName}} {{Customers.customerLName}}</option>
+        {{/each}}
+    </select>   
+
+    <label for="input-customerID">Customer ID: </label>
+    <input type="text" name="input-customerID" id="copy-update-customerID">
+
+    <input type="submit">
+</form>
+
+<script src="./js/update_copy.js"></script>
+<script src="./js/add_copy.js"></script>
+<script src="./js/delete_copy.js"></script>

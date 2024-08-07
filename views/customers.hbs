@@ -4,7 +4,7 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
 {{!-- Create a table --}}
-<table id="media-table">
+<table id="customers-table">
 
     {{!-- Header section --}}
     <thead>
@@ -40,7 +40,7 @@
 
 <!-- /views/customers.hbs -->
 <h2>Add a Customer</h2>
-<p>To add a new customer, please enter the information below and click `Submit`</p>
+<p>To add a new customer, please enter the information below and click `Submit`.</p>
 <form id="add-customer-form" method="POST" action="/add-customer-form">
     <label for="input-firstName">First Name: </label>
     <input type="text" name="input-firstName" id="input-firstName-html">
@@ -58,7 +58,7 @@
 </form>
 
 <h2>Updating A Customer's Phone Number</h2>
-<p>To update a customer's contact information select their name from the drop down list, then enter their new phone number.
+<p>To update a customer's contact information, select their name from the drop down list, then enter their new phone number.
 </p>
 <form id="update-customer-form-ajax">
 
@@ -73,10 +73,8 @@
     <label for="input-phoneNumber">Phone Number: </label>
     <input type="text" name="input-phoneNumber" id="customer-update-phoneNumber">
 
-    <!--
-    <label for="input-lastName">Email: </label>
-    <input type="email" name="input-email" id="customer-update-email">
-    -->
-
     <input type="submit">
 </form>
+
+<script src="./js/update_customer.js"></script>
+<script src="./js/delete_customer.js"></script>
