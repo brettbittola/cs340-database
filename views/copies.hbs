@@ -11,11 +11,14 @@
         {{!-- For just the first row, we print each key of the row object as a header cell so we
         know what each column means when the page renders --}}
         <tr>
-            {{#each data.[0]}}
-            <th>
-                {{@key}}
-            </th>
-            {{/each}}
+            <th>Copy ID</th>
+            <th>Media ID</th>
+            <th>Media Title</th>
+            <th>Creator Name</th>
+            <th>Media Type</th>
+            <th>Customer ID</th>
+            <th>Customer First Name</th>
+            <th>Customer Last Name</th>
             <th>delete</th>
         </tr>
     </thead>
