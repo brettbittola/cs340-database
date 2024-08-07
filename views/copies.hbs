@@ -62,7 +62,7 @@
     <select name="input-customerID" id="mySelect">
         <option value="test">Select a Copy ID</option>
         {{#each data}}
-        <option value="{{this.copyID}}">Copy ID {{this.copyID}} for {{Media.mediaID}} {{Media.title}}, currently checked out by {{Customers.customerID}} {{Customers.customerFName}} {{Customers.customerLName}}</option>
+        <option value="{{this.copyID}}">Copy ID {{this.copyID}} for {{this.Media.mediaID}} {{this.Media.title}}, currently checked out by {{this.Customers.customerID}} {{this.Customers.customerFName}} {{this.Customers.customerLName}}</option>
         {{/each}}
     </select>   
 
