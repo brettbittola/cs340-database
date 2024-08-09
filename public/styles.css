@@ -1,0 +1,63 @@
+body {
+    background-color:#d0cfea;
+    color: #0d0d0c;
+    padding:5px;
+}
+
+header {
+    text-align: center;
+}
+
+
+fieldset {
+    background-color: #bcbcbc;
+}
+
+a:link {
+    color: rgb(100, 70, 234);
+  }
+  
+  a:hover {
+    color: #294aef;
+  }
+  
+  a:active {
+    color: #043892;
+  }
+
+  tr, fieldset {
+    background-color: #76cdf2;
+    color: black;
+  }
+
+  h1 {
+    color:rgb(59, 74, 65);
+  }
+
+  form {
+    width: 100%;
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+  
+  li {
+    float: left;
+    background-color: #b3aeae;
+  }
+  
+  li a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  li a:hover {
+    background-color: #646262;
+  }

@@ -24,8 +24,8 @@ VALUES (:customerFNameInput, :customerLNameInput, :phoneInput, :emailInput);
 
 
 --- SELECT queries for tables as appropriate
---- get all media item titles, types, and creators
-SELECT Media.title, Types.typeName, Creators.creatorName
+--- get all media item IDs, titles, typeID, types, creatorID, and creators
+SELECT Meadia.mediaID, Media.title, Media.typeID, Types.typeName, Media.creatorID, Creators.creatorName
 FROM Media
 JOIN Types ON Media.typeID = Types.typeID
 JOIN Creators ON Media.creatorID = Creators.creatorID;
@@ -37,12 +37,13 @@ JOIN Types ON Media.typeID = Types.typeID
 JOIN Creators ON Media.creatorID = Creators.creatorID
 WHERE Media.title = :titleInput;
 
---- get all copies of a given media item to populate a list, including the copy, media, and customer ids, the media title, and the customer name
-SELECT Copies.copyID, Media.mediaID, Media.title, Copies.customerID, Customers.firstName, Customers.lastName
+--- get all media data to populate the main display, including the copy, media, type, creator, customer id, and the customer name
+SELECT Copies.copyID, Media.mediaID, Media.title, Types.typeName, Creators.creatorName, Copies.customerID, Customers.firstName, Customers.lastName
 FROM Copies
 JOIN Media ON Copies.mediaID = Media.mediaID
-JOIN Customers ON Copies.customerID = Customers.customerID
-WHERE Media.title = :titleInput;
+JOIN Types ON Media.typeID = Types.typeID
+JOIN Creators ON Media.creatorID = Creators.creatorID
+JOIN Customers ON Copies.customerID = Customers.customerID;
 
 --- get all copies currently being loaned by a given customer
 SELECT Copies.copyID, Copies.customerID

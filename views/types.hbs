@@ -1,0 +1,34 @@
+<!--Starter code modified from OSU CS 340 Module 5 Web Application Technology Exploration-->
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    
+<table id="types-table">
+    <thead>
+        <tr>
+            <th>Type ID</th>
+            <th>Type Name</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {{#each data}}
+        <tr>
+            <td>{{this.typeID}}</td>
+            <td>{{this.typeName}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+<!-- /views/types.hbs -->
+<h2>Add a Type</h2>
+<p>To add a new type, please enter the information below and click `Submit`.</p>
+<form id="add-type-form" method="POST" action="/add-type-form">
+    <label for="input-typeName">Type Name: </label>
+    <input type="text" name="input-typeName" id="input-typeName-html" required>
+
+    <input type="submit">
+</form></div>
+
+</body>
+</html>

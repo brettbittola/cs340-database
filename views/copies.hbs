@@ -1,0 +1,104 @@
+<!-- Code adapted and modified from https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main -->
+
+<!-- copies.hbs -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+{{!-- Create a table --}}
+    <table id="copies-table">
+    {{!-- Header section --}}
+    <thead>
+
+        {{!-- For just the first row, we print each key of the row object as a header cell so we
+        know what each column means when the page renders --}}
+        <tr>
+            <th>Copy ID</th>
+            <th>Media ID</th>
+            <th>Media Title</th>
+            <th>Creator Name</th>
+            <th>Media Type</th>
+            <th>Customer ID</th>
+            <th>Customer First Name</th>
+            <th>Customer Last Name</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    {{!-- Body section --}}
+    <tbody>
+
+        {{!-- For each row, print the id, fname, lname, homeworld and age, in order --}}
+        {{#each data}}
+        <tr data-value={{this.copyID}}>
+            <td>{{this.copyID}}</td>
+            <td>{{this.mediaID}}</td>
+            <td>{{this.title}}</td>
+            <td>{{this.creatorName}}</td>
+            <td>{{this.typeName}}</td>
+            <td>{{#if this.customerID}}{{this.customerID}}{{else}}N/A{{/if}}</td>
+            <td>{{#if this.customerID}}{{this.firstName}}{{else}}N/A{{/if}}</td>
+            <td>{{#if this.customerID}}{{this.lastName}}{{else}}N/A{{/if}}</td>
+            <td><button onclick="deleteCopy({{this.copyID}})">Delete</button></td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+<!-- /views/customers.hbs -->
+<h2>Add a Copy</h2>
+<p>To add a new copy, please enter the information below and click `Submit`.</p>
+<form id="add-copy-form" method="POST" action="/add-copy-form">
+    <!--Dropdown for mediaID which shows media names-->
+    <label for="input-media">Media: </label>
+    <select name="input-media" id="input-media-html" required>
+        <option value="">Select a Media Item</option>
+        {{#each media}}
+        <option value="{{this.mediaID}}">{{this.title}}</option>
+        {{/each}}
+    </select>
+
+    <!--Dropdown for customerID which shows creator names-->
+    <label for="input-customer">Customer: </label>
+    <select name="input-customer" id="input-customer-html">
+        <option value="">Select a Customer</option>
+        <option value="NULL">N/A - Not Currently Loaned Out</option>
+        {{#each customers}}
+        <option value="{{this.customerID}}">{{this.firstName}} {{this.lastName}}</option>
+        {{/each}}
+    </select>
+
+    <input type="submit">
+</form>
+
+
+<h2>Updating A Copy </h2>
+<p>To update a copy's media and customer ID, select the copy ID from the drop down list, then enter their new customer ID.</p>
+<form id="update-copy-form-ajax">
+    <label for="input-copy-update">Copy ID: </label>
+    <select name="input-copy-update" id="input-copy-ajax" required>
+        <option value="test">Select a Copy ID</option>
+        {{#each data}}
+        <option value="{{this.copyID}}">{{this.copyID}}, {{this.title}} {{#if this.customerID}}, checked out by {{this.firstName}} {{this.lastName}}{{else}}{{/if}}</option>
+        {{/each}}
+    </select>   
+
+    <label for="input-media-update">Updated Media Item: </label>
+    <select name="input-media-update" id="input-media-ajax" required>
+        <option value="">Select a Media Item</option>
+        {{#each media}}
+        <option value="{{this.mediaID}}">{{this.title}}</option>
+        {{/each}}
+    </select>
+
+    <label for="input-customer-update">Customer: </label>
+    <select name="input-customer-update" id="input-customer-ajax" requried>
+        <option value="">Select a Customer</option>
+        <option value="NULL">N/A - Not Currently Loaned Out</option>
+        {{#each customers}}
+        <option value="{{this.customerID}}">{{this.firstName}} {{this.lastName}}</option>
+        {{/each}}
+    </select>
+
+    <input type="submit">
+</form>
+
+<script src="./js/update_copy.js"></script>
+<script src="./js/delete_copy.js"></script>

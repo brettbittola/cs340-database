@@ -1,10 +1,10 @@
 <!-- Code adapted and modified from https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main -->
 
-<!-- index.hbs -->
+<!-- customers.hbs -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
 {{!-- Create a table --}}
-<table id="customers-table">
+<table id="media-table">
 
     {{!-- Header section --}}
     <thead>
@@ -12,97 +12,55 @@
         {{!-- For just the first row, we print each key of the row object as a header cell so we
         know what each column means when the page renders --}}
         <tr>
-            {{#each data.[0]}}
-            <th>
-                {{@key}}
-            </th>
-            {{/each}}
-            <th>delete</th>
+            <th>Media ID</th>
+            <th>Title</th>
+            <th>Type ID</th>
+            <th>Type</th>
+            <th>Creator ID</th>
+            <th>Creator</th>
         </tr>
     </thead>
 
     {{!-- Body section --}}
     <tbody>
-
         {{!-- For each row, print the id, fname, lname, homeworld and age, in order --}}
         {{#each data}}
-        <tr data-value={{this.customerID}}>
-            <td>{{this.customerID}}</td>
-            <td>{{this.firstName}}</td>
-            <td>{{this.lastName}}</td>
-            <td>{{this.phoneNumber}}</td>
-            <td>{{this.email}}</td>
-            <td><button onclick="deleteCustomer({{this.customerID}})">Delete</button></td>
+        <tr data-value={{this.mediaID}}>
+            <td>{{this.mediaID}}</td>
+            <td>{{this.title}}</td>
+            <td>{{this.typeID}}</td>
+            <td>{{this.typeName}}</td>
+            <td>{{this.creatorID}}</td>
+            <td>{{this.creatorName}}</td>
         </tr>
         {{/each}}
     </tbody>
 </table>
 
+<!-- /views/customers.hbs -->
+<h2>Add a Media Item</h2>
+<p>To add a new media item, please enter the information below and click `Submit`</p>
+<form id="add-media-form" method="POST" action="/add-media-form">
+    <label for="input-title">Title: </label>
+    <input type="text" name="input-title" id="input-title-html" placeholder="Media Title" required>
 
-<script src="./js/delete_customer.js"></script>
-
-<!-- /views/index.hbs -->
-<h2>Add a Customer</h2>
-<p>To add a new copy, please enter the information below and click `Submit`</p>
-<form id="add-copy-form" method="POST" action="/add-customer-form">
-    <label for="input-firstName">First Name: </label>
-    <input type="text" name="input-firstName" id="input-firstName-html">
-    
-    <label for="input-lastName">Last Name: </label>
-    <input type="text" name="input-lastName" id="input-lastName-html">
-
-    <label for="input-phoneNumber">Phone Number: </label>
-    <input type="tel" name="input-phoneNumber" id="input-phoneNumber-html">
-
-    <label for="input-lastName">Email: </label>
-    <input type="email" name="input-email" id="input-email-html">
-
-    <!-- This can be modified for drop down inputs on other pages
-    <label for="input-homeworld">Homeworld: </label>
-    <select name="input-homeworld" id="input-homeworld-ajax">
-        <option value="">Select a Planet</option>
-        {{#each planets}}
-        <option value="{{this.id}}">{{this.name}}</option>
+    <!--Dropdown for typeID which shows type names-->
+    <label for="input-type">Media Type: </label>
+    <select name="input-type" id="input-type-ajax" required>
+        <option value="">Select a Media Type</option>
+        {{#each types}}
+        <option value="{{this.typeID}}">{{this.typeName}}</option>
         {{/each}}
-    </select> -->
+    </select>
 
-    <input type="submit">
-</form>
-
-<!-- Example of a search box for other pages
-<h2>Search Using an HTML Form</h2>
-<p>Search by media ID using the field below.</p>
-<form id="search-copy-html" method='GET' action='/'>
-    <label for="input-mediaID">Search by Media ID: </label>
-    <input type="text" name="mediaID" id="input-mediaID-html-search">
-    
-    <input type="submit">
-    <a href='/'><button>Reset</button></a>
-</form>
--->
-
-<h2>Updating A Customer's Phone Number</h2>
-<p>To update a customer's contact information select their name from the drop down list, then enter their new phone number.
-</p>
-<form id="update-customer-form-ajax">
-
-    <label for="input-customerID">Full Name: </label>
-    <select name="input-customerID" id="mySelect">
-        <option value="test">Select a Person</option>
-        {{#each data}}
-        <option value="{{this.customerID}}">{{this.firstName}} {{this.lastName}}</option>
+    <!--Dropdown for creatorID which shows creator names-->
+    <label for="input-creator">Creator: </label>
+    <select name="input-creator" id="input-creator-ajax" required>
+        <option value="">Select a Creator</option>
+        {{#each creators}}
+        <option value="{{this.creatorID}}">{{this.creatorName}}</option>
         {{/each}}
-    </select>   
-
-    <label for="input-phoneNumber">Phone Number: </label>
-    <input type="text" name="input-phoneNumber" id="customer-update-phoneNumber">
-
-    <!--
-    <label for="input-lastName">Email: </label>
-    <input type="email" name="input-email" id="customer-update-email">
-    -->
+    </select>
 
     <input type="submit">
 </form>
-
-<script src="./js/update_customer.js"></script>
