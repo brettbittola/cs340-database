@@ -1,4 +1,6 @@
-// Code adapted and modified from https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main
+// Code adapted from the full program at https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/
+// Retrieved 8/01/24
+// Variables, and specific code structures were adapted to fit this project, but the overall code and project structures belongs to the original source.
 
 // Get the objects we need to modify
 let updateCustomerForm = document.getElementById('update-customer-form-ajax');

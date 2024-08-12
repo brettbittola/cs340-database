@@ -1,7 +1,10 @@
-<!--Starter code modified from OSU CS 340 Module 5 Web Application Technology Exploration-->
+<!-- Code adapted from the full program at https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/
+Retrieved 8/01/24
+Variables, and specific code structures were adapted to fit this project, but the overall code and project structures belongs to the original source. -->
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
+<!-- Create a new creators table -->
 <table id="creators-table">
     <thead>
         <tr>
@@ -9,7 +12,7 @@
             <th>Creator Name</th>
         </tr>
     </thead>
-
+<!-- Create a new row based on creators in the database -->
     <tbody>
         {{#each data}}
         <tr>

@@ -1,63 +1,87 @@
 body {
-    background-color:#d0cfea;
-    color: #0d0d0c;
-    padding:5px;
-}
-
-header {
-    text-align: center;
-}
-
-
-fieldset {
-    background-color: #bcbcbc;
+  background-color:#d0cfea;
+  padding:5px;
+  font-family: Inter, sans-serif;
+  color:rgb(59, 74, 65);
+  text-align: center;
 }
 
 a:link {
-    color: rgb(100, 70, 234);
-  }
+  color: rgb(100, 70, 234);
+}
+ 
+a:hover {
+  color: #294aef;
+}
   
-  a:hover {
-    color: #294aef;
-  }
-  
-  a:active {
-    color: #043892;
-  }
+a:active {
+  color: #043892;
+}
 
-  tr, fieldset {
-    background-color: #76cdf2;
-    color: black;
-  }
+tr, fieldset {
+  background-color: #76cdf2;
+  color: black;
+  border-color: #0d0d0c;
+  border-bottom: 1px solid black;
+}
 
-  h1 {
-    color:rgb(59, 74, 65);
-  }
+h1 {
+  color:rgb(59, 74, 65);
+  text-align: center;
+}
 
-  form {
-    width: 100%;
-  }
+form {
+  width: 100%;
+}
 
-  ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-  }
+th {
+  border-bottom: 3px solid black;
+  padding: 10px;
+}
+
+td {
+  padding: 10px;
+  color:rgb(59, 74, 65);
+}
+
+li {
+  display: inline-block;
+  background-color: #b3aeae;
+}
+
+ul {
+  list-style-type: none;
+  overflow: hidden;
+}
   
-  li {
-    float: left;
-    background-color: #b3aeae;
-  }
+li a {
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
   
-  li a {
-    display: block;
-    color: black;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-  }
-  
-  li a:hover {
-    background-color: #646262;
-  }
+li a:hover {
+  background-color: #a0d2eb;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  min-width: 200px;
+  margin-bottom: 15px;
+  padding: 0;
+}
+
+table {
+    border-collapse: collapse;
+    min-width: 400px;
+    margin: 0 auto;
+    border: 2px solid black;
+}
+
+tr:nth-child(even) {
+  background-color: #bae3f4;
+}
